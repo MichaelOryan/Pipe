@@ -1,5 +1,7 @@
-# Pipe
+# Pipe v0.1a
 A synchronous promise
+
+Still working out the details but at the moment as of the first commit of code this is the idea.
 
 Start with new Pipe()
 

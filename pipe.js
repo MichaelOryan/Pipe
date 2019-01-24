@@ -41,4 +41,36 @@ function Pipe (value) {
     }
     return this;
   }
+  
+  // Untested. It's late.
+  // Pass in a bunch of pipes
+  // Apply them all to the result
+  // result is a bunch of pipes
+  this.fork = pipes => {
+  	if(!this._errorState) {
+    	try {
+        this._result = pipes.map(pipe => pipe(this._result));
+      } catch (error) {
+      	this._errorState = true;
+        this._error = error;      
+      }
+    }
+    return this;  
+  }
+  
+  // Take some pipes and turn them back into not pipes
+  // I dunno I'm sleepy. It seems like something fun that might have some use.
+  // Need to test
+  
+  this.merge = pipes => {
+  	if(!this._errorState) {
+    	try {
+        this._result = pipes.map(pipe => pipe(this._result.result()));
+      } catch (error) {
+      	this._errorState = true;
+        this._error = error;      
+      }
+    }
+    return this;    
+  }
 }
